@@ -1,0 +1,85 @@
+// Vérificateur d'année bissextile : 
+// créez une fonction qui prend une année en entrée et détermine s'il s'agit d'une année bissextile ou non. 
+// Les années bissextiles sont divisibles par 4, mais pas par 100, sauf si elles sont également divisibles par 400.
+ALGORITHM Bissextile
+
+FUNCTION estBissextile(annee : INTEGER) : BOOLEAN
+BEGIN
+    IF ((annee % 4 === 0 and annee % 100 !== 0) or (annee % 400 === 0)) THEN
+        RETURN(true)
+    ELSE
+        RETURN(false)   
+    END_IF
+END
+
+VAR
+    annee : INTEGER
+BEGIN
+    Write("Donner l'annee à vérifier")
+    Read(annee)
+    Write("L'année", annee, "est bissextile ? :", estBissextile())
+END
+
+
+// Tarification des billets : 
+// Écrivez un programme qui invite l'utilisateur à saisir son âge, 
+// puis détermine le prix d'un billet de cinéma en fonction des critères suivants :
+
+// Enfants (âge <= 12 ans) : 10 $
+// Adolescents (13-17 ans) : 15 $
+// Adultes (âge >= 18) : 20 $
+ALGORITHM prixDeBillet
+VAR
+    age : INTEGER
+BEGIN
+    Write("Donnez votre âge")
+    Read(age)
+    SWITCH (age) DO
+        case age >= 18 : Write("Le montant du billet est de: 20$")
+        case age >= 13 and age <= 17 : Write("Le montant du billet est de: 15$")
+        default : Write("Le montant du billet est de: 10$")
+    END_SWITCH
+END
+
+
+// Suite de Fibonacci : 
+// implémenter une fonction récursive pour générer le n-ième nombre de Fibonacci. 
+// La suite de Fibonacci commence par 0 et 1, et chaque nombre suivant est la somme des deux nombres précédents 
+// (0, 1, 1, 2, 3, 5, 8, ...).
+ALGORITHM Fibonacci
+FUNCTION fib(n : INTEGER) : INTEGER
+BEGIN
+    IF (n < 2) THEN
+        RETURN n
+    ELSE
+        RETURN fib(n - 2) + fib(n - 1)
+    END_IF
+END
+VAR
+    n : INTEGER
+BEGIN
+    Write("Veuillez enter un nombre")
+    Read(n)
+    Write(fib(n))
+END
+
+
+// Fonction puissance : 
+// écrivez une fonction récursive pour calculer le résultat de l'élévation d'un nombre à une puissance donnée.
+ALGORITHM calculPuissance
+FUNCTION puissance(n, p : INTEGER) : INTEGER
+BEGIN
+    IF (p === 0) THEN
+        RETURN 1
+    ELSE
+        RETURN n * puissance(n, p-1)
+    END_IF
+END
+
+VAR
+    n, p : INTEGER
+BEGIN
+    Write("Veuillez saisir les valeurs de n et p: ")
+    Read(n, p)
+    Write("La puissance de ", n, "par ", p, "est: ",puissance(n, p))
+END
